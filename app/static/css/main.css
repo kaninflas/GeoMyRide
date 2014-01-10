@@ -1,0 +1,74 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+   /* Set the fixed height of the footer here */
+   header.navbar-fixed-top{
+    margin-right: 0px !important;
+   }
+   footer {
+     background-color: #f5f5f5;
+     bottom: 0;
+     position: fixed;
+   	 text-align: center;
+     width: 100%;
+   }
+
+
+   #fo-left{
+   	margin: 5px auto;
+   	width: 40%;
+   }
+   #fo-right{
+   	margin: 10px auto;
+   	width: 40%;
+   }
+   
+   .modal-content{
+      height: 100% !important;
+   }
+   .modal-dialog{
+      width: 95%;
+      height: 100% !important;
+   }
+   .modal-body{
+      height: 86%;
+   }
+   .no-decoration,
+   .no-decoration:hover{
+      text-decoration: none;
+      color: white;
+   }
+
+
+   @media(max-width: 990px){
+   	 footer{
+   	 	position: absolute;
+   	 }
+   	 #fo-left{
+   	 	width: 95%;
+   	 }
+   	 #fo-right{
+   	 	width: 95%;
+   	 }
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

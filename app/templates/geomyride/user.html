@@ -1,0 +1,30 @@
+{% block title %} Equipos {% endblock %}
+
+{% block heading %}
+<h2>Equipos:</h2>
+{% endblock %}
+
+{% block content %}
+<div class="panel-group" id="accordion">
+{% for equipo in equipos %}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse_{{equipo.id}}">
+          {{equipo.nombre}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapse_{{equipo.id}}" class="panel-collapse collapse in">
+      <div class="panel-body">
+        {{equipo.descripcion}}
+
+        <br>- Creado hace {{ equipo.created|timesince }}
+      </div>
+    </div>
+  </div>  
+{% endfor %}
+
+</div>
+
+{% endblock %}

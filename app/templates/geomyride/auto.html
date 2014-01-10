@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+  {% block title %} {{autos.nombre}} {% endblock %}
+
+  {% block heading %}
+  <h2> {{autos.modelo}} - {{autos.marca}}   
+  </h2>
+  <h4>Creado hace {{autos.created|timesince}}</h4>
+
+  {% endblock %}
+
+  {% block content %}
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Recorridos</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+  {% for recorrido in recorridos %}
+          {% ifchanged  recorrido.timestamp.day %}
+          <li class="list-group-item">
+            <a id="{{recorrido.id}}" name="{{autos.modelo}}" onclick="maps(this)" data-toggle="modal" data-target="#geoMap" href="#" class="list-group-item">
+              {{recorrido.timestamp|date:"D d F Y"}}
+            </a>
+          </li>
+          {% endifchanged %}
+  {% empty %}
+          <li class="list-group-item">Este vehículo aún no tiene recorridos registrados - <a href="/"> Regresar</a></li>
+  {% endfor %}
+
+      </ul> 
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="geoMap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"> </h4>
+        </div>
+        <div class="modal-body">
+          
+          <div id="map_canvas" style="width:100%; height:100%" ></div>  
+          <div id="result"></div>
+
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCrXfyJIrk4eboYjZvMsQhaUgekBFrC-yw&sensor=true&languaje=es&v3.10"></script>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% if create %}Crear{% else %}Editar{% endif %} {{data.title}}{% endblock %}
+
+{% block heading %}
+<h2>{% if create %}Crear {{data.title}}{% else %}Editar {{data.title}} {% endif %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if create %}
+{% url "{{data.url}}" as action_url %}
+{% else %}
+{% url "{{data.url}}" data.pk as action_url %}
+{% endif %}
+<form action="{{ action_url }}" method="post" accept-charset="utf-8">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <p><input type="submit" class="btn btn-default" value="Save" /></p>
+</form>
+{% endblock %}
