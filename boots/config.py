@@ -1,11 +1,11 @@
 from django.contrib.admin import ModelAdmin
 from django.conf import settings
-#from . import VERSION
+from . import VERSION
 
 
 def default_config():
     return {
-        'VERSION': 1,
+        'VERSION': VERSION,
 
         # configurable
         'ADMIN_NAME': 'Geo My Ride',
