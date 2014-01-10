@@ -1,6 +1,6 @@
 from django.contrib.admin import ModelAdmin
 from django.conf import settings
-from . import VERSION
+#from . import VERSION
 
 
 def default_config():
