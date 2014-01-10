@@ -5,7 +5,7 @@ from . import VERSION
 
 def default_config():
     return {
-        'VERSION': VERSION,
+        'VERSION': 1,
 
         # configurable
         'ADMIN_NAME': 'Geo My Ride',
