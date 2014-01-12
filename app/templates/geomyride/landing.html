@@ -1,12 +1,40 @@
 {% extends "base.html" %}
 {% block title %} Equipos {% endblock %}
 
-{% block heading %}
-<h2>Bienvenido a Geo My Ride:</h2>
-{% endblock %}
 
 {% block content %}
+	<div id="landing" class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row ">
+					<div class="col-md-5 column text-center">
 
-	<h4>Hola mundo</h4>
+						{% load static %}
+						<img id="landing-img" src="{% static 'img/geomyride.png' %}" width="40%" alt="geomyride" title="geomyride"/> 
+					</div>
+					<div id="left-content" class="col-md-7 column">
+						<ul class="list-unstyled">
+							<li><span class="glyphicon glyphicon-chevron-right"></span>
+								¿Cómo dueño de taxis y/o camiones, sabe exactamente la jornada de trabajo de cada uno de sus vehículos?
+							</li>
+							<li><span class="glyphicon glyphicon-chevron-right"></span>
+								 ¿Serviría de algo que tenga monitoreadas las rutas exactas y al momento de cada uno de sus vehículos? 
+							</li>
+							<li><span class="glyphicon glyphicon-chevron-right"></span>
+								¿Cree que podría tener un mejor control de las tarifas y de la eficiencia de costos de gasolina y mantenimiento con el que los choferes reportan?
+							</li>
+							<li><span class="glyphicon glyphicon-chevron-right"></span>
+								Si le roban un vehículo, ¿le gustaría saber donde se encuentra y poder apagarlo desde su computadora?
+							</li>
 
+
+							<h4 class="text-center">
+								Para eso es Geo My Ride. <a href="#">REGÍSTRATE</a>
+							</h4>
+					</div>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

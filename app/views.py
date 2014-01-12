@@ -2,14 +2,13 @@ from django.shortcuts import render_to_response,get_object_or_404, render,redire
 from django.template.context import RequestContext
 from django.core.exceptions import PermissionDenied
 
-from django.utils import simplejson
 from django.utils.dateformat import DateFormat
 from models import *
 from django.db.models import Q
 from forms import * 
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-import urllib2
+import urllib2,json
 
 
 
@@ -69,7 +68,7 @@ def equipo_edit(request, pk):
 @login_required
 def auto(request,id):
     autos = Auto.objects.get(pk = id);
-    recorridos = Recorrido.objects.filter(auto_id = id).order_by('timestamp')
+    recorridos = Recorrido.objects.filter(auto_id = id).order_by('-timestamp')
     
     return render(request, 'geomyride/auto.html', {'autos': autos,'recorridos':recorridos})
 
@@ -107,7 +106,8 @@ def auto_edit(request, pk):
         {'form': form, 'create': False, 'data': data})
 
 
-
+from django.db import connection
+import datetime   
 @login_required
 def geomyride(request):
     if request.method == "GET":
@@ -117,12 +117,13 @@ def geomyride(request):
 
 
     qs = Recorrido.objects.get(pk = id_recorrido)
-
+    day =  datetime.date(qs.timestamp.year,qs.timestamp.month,qs.timestamp.day) 
     recorridos = Recorrido.objects.filter(
-    	Q(auto_id= qs.auto_id),
-    	Q(timestamp__year = qs.timestamp.year),
-    	Q(timestamp__month= qs.timestamp.month),
-    	Q(timestamp__day  = qs.timestamp.day)
+        auto_id= qs.auto_id,
+        timestamp__range=(
+                        datetime.datetime.combine(day,datetime.time.min),
+                        datetime.datetime.combine(day,datetime.time.max)
+                                                                          )        
     ).order_by('-timestamp')
 
     to_json = []
@@ -140,8 +141,8 @@ def geomyride(request):
         to_json.append(dog_dict)
 
     # convert the list to JSON
-    # return an HttpResponse with the JSON and the correct MIME type
-    return HttpResponse(simplejson.dumps(to_json), mimetype='application/json')
+    # return an HttpResponse with the jsonON and the correct MIME type
+    return HttpResponse(json.dumps(to_json))
 
 
 

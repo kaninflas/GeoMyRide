@@ -2,9 +2,9 @@ var map,mapOptions, poly,marker,interval,mapFlag= false;
 function maps(i){
 
 	$('#geoMap #myModalLabel').html('GeoMy '+i.name)
-	geomyride(i.id)
-	interval = setInterval(function(){geomyride(i.id)},5000)
+	interval = setInterval(function(){geomyride(i)},5000)
 
+	geomyride(i)
 	$('#geoMap').on('shown.bs.modal', function () {
 	    google.maps.event.trigger(map, "resize");
 	});
@@ -16,6 +16,8 @@ function maps(i){
      	marker.setMap(null)
      	poly.setMap(null)
 	})
+
+
 }
 
 function init_map(data) {
@@ -31,23 +33,27 @@ function init_map(data) {
 
 		map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
 
-		var polyOptions = {
-		  strokeColor: '#000000',
-		  strokeOpacity: 0.8,
-		  strokeWeight: 3
-		};
+		google.maps.event.addListenerOnce(map, 'idle', function(){
+  			
+  			var polyOptions = {
+  			  strokeColor: '#000000',
+  			  strokeOpacity: 0.8,
+  			  strokeWeight: 3
+  			};
 
-		poly = new google.maps.Polyline(polyOptions);
-		poly.setMap(map);
+  			poly = new google.maps.Polyline(polyOptions);
+  			poly.setMap(map);
 
-		marker = new google.maps.Marker({
-			position: latLng,
-		 	title: 'Geo My Ride' ,
-		 	map: map,
-		 	animation: google.maps.Animation.BOUNCE,
+  			marker = new google.maps.Marker({
+  				position: latLng,
+  			 	title: 'Geo My Ride' ,
+  			 	map: map,
+  			 	animation: google.maps.Animation.BOUNCE,
+  			});
+  			marker.setMap(map)
+  			addLatLng(data);
+
 		});
-		marker.setMap(map)
-		addLatLng(data);
 
 	}else{
 		addLatLng(data);
@@ -63,11 +69,12 @@ function geomyride(id){
 	      url: "/geomyride",
 	      dataType: "json",
 	      data:{
-	      	'id': id,
+	      	'id': id.id,
 	      	'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
 	      },
 	      success: function(data){
 	      	init_map(data)     	
+	      	$('#geoMap #myModalLabel').html('GEO MY '+ id.name + ' - ' + data[0].timestamp)
 	      },
 	      failure: function(data){
 	      	console.log('error: ',data)
@@ -83,6 +90,17 @@ function addLatLng(data){
     		if(key === 0){
     	    	marker.setPosition(latLng)
     	    	map.setCenter(latLng);
+    		}else{
+    			var mark = new google.maps.Marker({
+    				position: latLng,    				
+    				icon: {
+    				  path: google.maps.SymbolPath.CIRCLE,
+    				  scale: 3
+    				},
+    			 	title: 'Position' ,
+    			 	map: map
+    			});
+    			mark.setMap(map)
     		}
             path.push(latLng);
     });
