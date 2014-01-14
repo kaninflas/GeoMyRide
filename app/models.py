@@ -43,4 +43,18 @@ class Recorrido(models.Model):
     def __unicode__(self):
         return "{'id': %s, 'lat': %s ,'lan':  %s, 'timestamp':%s}" % (self.pk,self.latitud,self.longitud,self.timestamp)
 
+class Simulador(models.Model):
+    auto_id  = models.ForeignKey(Auto)
+    aprs     = models.CharField( max_length = 140)
+    latitud  = models.FloatField();
+    longitud = models.FloatField();
+    speed    = models.FloatField()
+    timestamp= models.DateTimeField(auto_now_add=True)  
+
+    def get_aprs(self):
+        return self.auto_id
+
+    def __unicode__(self):
+        return "{'id': %s, 'lat': %s ,'lan':  %s, 'timestamp':%s}" % (self.pk,self.latitud,self.longitud,self.timestamp)
+
 

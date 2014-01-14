@@ -38,3 +38,19 @@ class AutosForm(ModelForm):
                 raise TypeError('No hay equipo asignado')
             self.instance.equipo_id = self._equipo_id
         return super(AutosForm, self).save(commit)    
+
+class SignUp(ModelForm):
+    class Meta:
+        model = User
+        exclude = ('usuario_id', 'created', 'modified')
+
+    def __init__(self, *args, **kwargs):
+        self._usuario_id = kwargs.pop('usuario_id', None)
+        super(EquiposForm, self).__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        if not self.instance.pk:
+            if not self._usuario_id:
+                raise TypeError('No hay usuario asignado')
+            self.instance.usuario_id = self._usuario_id
+        return super(EquiposForm, self).save(commit)    

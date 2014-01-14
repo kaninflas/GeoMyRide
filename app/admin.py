@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Equipo,Auto,Recorrido
+from models import Equipo,Auto,Recorrido,Simulador
 import thread, time
 
 
@@ -20,6 +20,11 @@ class EnlaceRecorrido(admin.ModelAdmin):
 	list_filter = ('aprs',)
 	search_fields = ('aprs',)
 
+class EnlaceSimulador(admin.ModelAdmin):
+	list_display = ('aprs','latitud','longitud', 'timestamp')
+	list_filter = ('aprs',)
+	search_fields = ('aprs',)
+
 	"""
 	def aprs(self, obj):
 		v = obj.get_aprs()
@@ -32,3 +37,4 @@ class EnlaceRecorrido(admin.ModelAdmin):
 admin.site.register(Equipo,EnlaceAdmin)
 admin.site.register(Auto,EnlaceAuto)
 admin.site.register(Recorrido,EnlaceRecorrido)
+admin.site.register(Simulador,EnlaceSimulador)

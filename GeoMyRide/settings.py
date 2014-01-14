@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    #'registration',
     # Uncomment the next line to enable the admin:
     'boots',
     'django.contrib.admin',
