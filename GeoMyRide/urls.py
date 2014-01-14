@@ -7,7 +7,8 @@ admin.autodiscover()
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
-    url(r'^$', 'app.views.home', name='home'), 
+    url(r'^$', 'app.views.home', name='home'),     
+    url(r'^register$', 'app.views.register'    , name='register'), 
 
     url(r'^equipo_create$', 'app.views.equipo_create', name='equipo_create'), 
     url(r'^equipo_edit$', 'app.views.equipo_edit'    , name='equipo_edit'),  
