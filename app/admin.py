@@ -21,9 +21,7 @@ class EnlaceRecorrido(admin.ModelAdmin):
 	search_fields = ('aprs',)
 
 class EnlaceSimulador(admin.ModelAdmin):
-	list_display = ('aprs','latitud','longitud', 'timestamp')
-	list_filter = ('aprs',)
-	search_fields = ('aprs',)
+	list_display = ('latitud','longitud')
 
 	"""
 	def aprs(self, obj):
