@@ -48,10 +48,7 @@ class Simulador(models.Model):
     longitud = models.FloatField();
     speed    = models.FloatField() 
 
-    def get_aprs(self):
-        return self.auto_id
-
     def __unicode__(self):
-        return "{'id': %s, 'lat': %s ,'lan':  %s, }" % (self.pk,self.latitud,self.longitud)
+        return "{'id': %s, 'lat': %s ,'lan':  %s}" % (self.pk,self.latitud,self.longitud)
 
 

@@ -16,8 +16,9 @@ DATABASES = {
         'NAME': 'geomyride',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PASSWORD': '',
+        #'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST' : ''
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -121,14 +122,13 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'suit',
     'app',
-    #'registration',
     # Uncomment the next line to enable the admin:
-    'boots',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
-    'crispy_forms',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
