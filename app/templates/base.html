@@ -10,7 +10,7 @@
         {% load static %}
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="icon" href="{% static "img/ico.png" %}" type="image/png">
+        <link rel="icon" href="{% static "img/fav.png" %}" type="image/png">
 
         <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
         <style>
@@ -105,6 +105,8 @@
           (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
           g.src='//www.google-analytics.com/ga.js';
           s.parentNode.insertBefore(g,s)}(document,'script'));
+
+          BASE_PATH = '{{ STATIC_URL }}';
       </script>
 
      </section>

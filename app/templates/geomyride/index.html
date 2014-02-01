@@ -41,7 +41,10 @@
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse_{{equipo.id}}">
             {{equipo.nombre}} - 
             <button title="Agregar Auto" type="button" class="btn btn-primary btn-sm badge pull-right">
+              <!--#Descomentar si se quiere agregar autos
               <a href="auto_create/{{ equipo.id }}" class="no-decoration"><span class="glyphicon glyphicon-plus"></span></a>
+              -->
+              <a href="#" class="no-decoration"><span class="glyphicon glyphicon-plus"></span></a>
             </button>
           </a>
         </h4>
@@ -67,10 +70,16 @@
             {% endif %}
 
 
-          {% empty %}            
+          {% empty %} 
+            <!-- Descomentar si se quiere crear autos           
             <a href="auto_create/{{ equipo.id }}" class="list-group-item">
               <h4 class="list-group-item-heading">No tiene GeoMyRide en ningún vehículo</h4>
               <p class="list-group-item-text">Click para solicitar un nuevo GeoMyRide</p>
+            </a>
+            -->
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">No tiene GeoMyRide en ningún vehículo</h4>
+              <p class="list-group-item-text">Contactar al administrador para solicitar uno nuevo</p>
             </a>
           {% endfor %}
 

@@ -38,6 +38,9 @@
    #landing ul li{
       margin: 10px auto;
    }
+   #toggleplay{
+      margin-right: 15px;
+   }
    
    .modal-content{
       height: 100% !important;
