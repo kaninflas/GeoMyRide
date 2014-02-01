@@ -139,7 +139,6 @@ function deleteMarkers() {
 }
 
 function setInfowindow(data,me){
-  console.log(me)
   var content = "<h4>"+ data.aprs+ "</h4>";
   content += "<p> <strong>Hora: </strong>"+ data.timestamp+"</p>"
   content += "<p> <strong>Velocidad: </strong>"+ data.speed+" kms/hra</p>"
@@ -155,11 +154,8 @@ function setInfowindow(data,me){
 
 function pauseGeo(){
   clearInterval(interval);
-  console.log("pause");
 }
 function startGeo(i){  
-  console.log(i);
   interval = setInterval(function(){geomyride(i)},5000)
-  console.log("start");
 }
 
