@@ -4,11 +4,12 @@
   {% block title %} Equipos {% endblock %}
 
   {% block heading %}
-  <h2>Equipos    
+  <h2>Equipos  
+     <!--#Descomentar si se quiere agregar autos -   
     <button title="Agregar Equipo" type="button" class="btn btn-success">
       <a href="equipo_create" class="no-decoration"><span class="glyphicon glyphicon-plus"></span></a>
     </button>
-
+    -->
     <!-- Modal -->
     <div class="modal fade" id="addEquipo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -39,13 +40,13 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapse_{{equipo.id}}">
-            {{equipo.nombre}} - 
+            {{equipo.nombre}}  <!--#Descomentar si se quiere agregar autos - 
             <button title="Agregar Auto" type="button" class="btn btn-primary btn-sm badge pull-right">
-              <!--#Descomentar si se quiere agregar autos
+             
               <a href="auto_create/{{ equipo.id }}" class="no-decoration"><span class="glyphicon glyphicon-plus"></span></a>
-              -->
               <a href="#" class="no-decoration"><span class="glyphicon glyphicon-plus"></span></a>
             </button>
+              -->
           </a>
         </h4>
       </div>
