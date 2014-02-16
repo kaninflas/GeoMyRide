@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     
     url(r'^auto/(\d+)$', 'app.views.auto', name='auto'), 
     #descomentar si se quieren crear autos
-    #url(r'^auto_create/(\d+)$', 'app.views.auto_create', name='auto_create'), 
+    url(r'^auto_create/(\d+)$', 'app.views.auto_create', name='auto_create'), 
     url(r'^auto_edit$', 'app.views.auto_edit'    , name='auto_edit'), 
 
     url(r'^geomyride$', 'app.views.geomyride', name='geomyride'),  
